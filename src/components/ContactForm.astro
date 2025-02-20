@@ -1,62 +1,104 @@
 <div class="flex flex-col md:flex-row md:gap-6">
-    <!-- Texto -->
-    <div class="w-full md:w-1/2 pr-7 mb-6 md:mb-0">
-      <p class="text-pretty mb-4">
-        Estoy disponible para nuevas oportunidades y colaboraciones.
-      </p>
-      <p>
-        Puedes contactarme a través de este formulario o enviarme un correo
-        electrónico a <span class="font-bold">manuelignaciomarcos@gmail.com</span>
-      </p>
-    </div>
-    
-    <!-- Formulario -->
-    <div class="w-full md:w-1/2 max-w-2xl mx-auto shadow-md rounded-lg">
-      <form action="https://formspree.io/f/{TU-ID-DE-FORMULARIO}" method="POST">
-        <!-- Nombre -->
-        <div class="mb-4">
-          <input
-            type="text"
-            id="name"
-            name="name"
-            class="w-full px-4 py-2 border border-[#A0A0A0] rounded-lg bg-[#1F1F1F] text-[#EAEAEA] focus:outline-none focus:ring-2 focus:ring-[#5A67D8]"
-            placeholder="Tu nombre"
-            required
-          />
-        </div>
-  
-        <!-- Correo Electrónico -->
-        <div class="mb-4">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="w-full px-4 py-2 border border-[#A0A0A0] rounded-lg bg-[#1F1F1F] text-[#EAEAEA] focus:outline-none focus:ring-2 focus:ring-[#5A67D8]"
-            placeholder="Tu correo electrónico"
-            required
-          />
-        </div>
-  
-        <!-- Mensaje -->
-        <div class="mb-4">
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            class="w-full px-4 py-2 border border-[#A0A0A0] rounded-lg bg-[#1F1F1F] text-[#EAEAEA] focus:outline-none focus:ring-2 focus:ring-[#5A67D8]"
-            placeholder="Escribe tu mensaje aquí"
-            required></textarea>
-        </div>
-  
-        <!-- Botón Enviar -->
-        <div class="mb-4">
-          <button
-            type="submit"
-            class="w-full py-2 bg-[#5A67D8] text-white rounded-lg hover:bg-[#4C51BF] focus:outline-none focus:ring-2 focus:ring-[#14B8A6] transition-colors duration-300"
-          >
-            Enviar
-          </button>
-        </div>
-      </form>
-    </div>
+  <!-- Texto -->
+  <div class="w-full md:w-1/2 pr-7 mb-6 md:mb-0">
+    <p class="text-pretty mb-4">
+      Estoy disponible para nuevas oportunidades y colaboraciones.
+    </p>
+    <p>
+      Puedes contactarme a través de este formulario o enviarme un correo
+      electrónico a <span class="font-bold">manuelignaciomarcos@gmail.com</span>
+    </p>
   </div>
+
+  <!-- Formulario -->
+  <div class="w-full md:w-1/2 max-w-2xl mx-auto shadow-md rounded-lg">
+    <form
+      id="contact-form"
+      action="https://formspree.io/f/manqvelr"
+      method="POST"
+    >
+      <!-- Nombre -->
+      <div class="mb-4">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="w-full px-4 py-2 border border-[#A0A0A0] rounded-lg bg-[#1F1F1F] text-[#EAEAEA] focus:outline-none focus:ring-2 focus:ring-[#5A67D8]"
+          placeholder="Tu nombre"
+          required
+        />
+      </div>
+
+      <!-- Correo Electrónico -->
+      <div class="mb-4">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="w-full px-4 py-2 border border-[#A0A0A0] rounded-lg bg-[#1F1F1F] text-[#EAEAEA] focus:outline-none focus:ring-2 focus:ring-[#5A67D8]"
+          placeholder="Tu correo electrónico"
+          required
+        />
+      </div>
+
+      <!-- Mensaje -->
+      <div class="mb-4">
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          class="w-full px-4 py-2 border border-[#A0A0A0] rounded-lg bg-[#1F1F1F] text-[#EAEAEA] focus:outline-none focus:ring-2 focus:ring-[#5A67D8]"
+          placeholder="Escribe tu mensaje aquí"
+          required></textarea>
+      </div>
+
+      <!-- Botón Enviar -->
+      <div class="mb-4">
+        <button
+          type="submit"
+          class="w-full py-2 bg-[#5A67D8] text-white rounded-lg hover:bg-[#4C51BF] focus:outline-none focus:ring-2 focus:ring-[#14B8A6] transition-colors duration-300"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+
+    <!-- Mensaje de éxito -->
+    <p id="thank-you-message" class="text-green-500 text-center mt-4 hidden">
+      ¡Gracias por tu mensaje! Me pondré en contacto contigo lo antes posible.
+    </p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form") as HTMLFormElement; // Type assertion aquí
+    const thankYouMessage = document.getElementById("thank-you-message");
+
+    if (form && thankYouMessage) {
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evitar el envío normal del formulario
+
+        fetch(this.action, {
+          method: "POST",
+          body: new FormData(this),
+          headers: { Accept: "application/json" },
+        })
+          .then((response) => {
+            if (response.ok) {
+              thankYouMessage.classList.remove("hidden"); // Mostrar el mensaje de agradecimiento
+              form.reset(); // Limpiar el formulario
+              setTimeout(() => {
+                thankYouMessage.classList.add("hidden");
+              }, 5000);
+            } else {
+              alert("Ocurrió un error al enviar el mensaje.");
+            }
+          })
+          .catch((error) =>
+            console.error("Error al enviar el formulario:", error)
+          );
+      });
+    }
+  });
+</script>
