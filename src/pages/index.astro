@@ -1,74 +1,48 @@
 ---
 import Badge from "../components/Badge.astro";
 import Layout from "../layouts/Layout.astro";
-import LinkedinIcon from "../icons/Linkedin.astro";
-import GithubIcon from "../icons/Github.astro";
-import MailIcon from "../icons/Mail.astro"
-import SocialBadge from "../components/SocialBadge.astro";
+import Link from "../icons/Link.astro";
 import Experience from "../components/Experience.astro";
 import Section from "../components/Section.astro";
 import BriefCase from "../icons/Briefcase.astro";
+import CodeIcon from "../icons/Code.astro";
+import Projects from "../components/Projects.astro";
+import Hero from "../components/Hero.astro";
+import Certification from "../components/Certification.astro";
+import ContactForm from "../components/ContactForm.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout
-  title="Portfolio | Manuel Marcos"
-  description="descripcion">
+<Layout title="Portfolio | Manuel Marcos" description="descripcion">
   <main class="px-4">
-    <Section class="py-33 pb-30">
-      <img
-        class="rounded-full h-12 w-12 mb-3"
-        src="/profile_img.jpg"
-        alt="manumarcos photo"
-      />
-      <h1 class="text-white text-3xl md:text-4xl font-bold flex gap-x-3 pb-6 lg:pb-10">
-        Hola, soy Manuel <a
-          href="https://linkedin.com/in/manuel-ignacio-marcos"
-          target="_blank"
-          rel="noopener"
-          class="flex justify-center items-center"
-        >
-          <Badge>Disponible para trabajar</Badge>
-        </a>
-      </h1>
-      <h2 class="lg:text-xl text-2xl text-pretty max-w-[700px] ">
-        <span class="opacity-80">+2 años de experiencia.</span>
-        <span class="text-blue-300"> Desarrollador Backend.</span>
-        <span class="opacity-50"> De Buenos Aires, Argentina 🇦🇷. </span>
-      </h2>
-
-      <ul class="flex gap-3 mt-5 flex-wrap">
-        <li>
-          <SocialBadge
-            href="https://www.linkedin.com/in/manuel-ignacio-marcos/"
-          >
-            <LinkedinIcon class="md:size-6 size-4" />
-            Linkedin
-          </SocialBadge>
-        </li>
-        <li>
-          <SocialBadge
-            href="https://github.com/ManuMarcos"
-          >
-            <GithubIcon  class="md:size-6 size-4" />
-            Github
-          </SocialBadge>
-        </li>
-        <li>
-          <SocialBadge
-            href="mailto:manuelignaciomarcos@gmail.com"
-          >
-            <MailIcon class="md:size-6 size-4" />
-            Contáctame
-          </SocialBadge>
-        </li>
-      </ul>
+    <Section id="top" class=" py-10 md:py-30 md:pb-30">
+      <Hero />
     </Section>
     <Section id="experiencia">
-      <h2 class="flex gap-x-2 items-center text-2xl font-semibold mb-6"><BriefCase class="size-6"/>Experiencia Laboral</h2>
-      <Experience>
+      <h2 class="flex gap-x-2 items-center text-3xl font-semibold mb-6">
+        Experiencia Laboral
+      </h2>
+      <Experience />
+    </Section>
+    <Section id="proyectos">
+      <h2 class="flex gap-x-2 items-center text-3xl font-semibold mb-6">
+        Proyectos
+      </h2>
+      <Projects />
+    </Section>
+    <Section id="cursos">
+      <h2 class="flex gap-x-2 items-center text-3xl font-semibold mb-6">
+        Cursos y certificaciones
+      </h2>
+      <Certification />
+    </Section>
+    <Section id="contacto" class="mt-5">
+      <h2 class="flex gap-x-2 items-center text-3xl font-semibold mb-6">
+        Contacto
+      </h2>
+      <ContactForm/>
     </Section>
   </main>
 </Layout>

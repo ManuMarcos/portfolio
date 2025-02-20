@@ -1,0 +1,63 @@
+---
+import Link from "../icons/Link.astro";
+
+const CERTIFICATIONS = [
+  {
+    title: "Java - De cero a experto",
+    from: "Udemy",
+    date: "2023",
+    link: "https://www.udemy.com/certificate/UC-1696b95b-ca20-409f-82a0-07e93d44de54/",
+  },
+  {
+    title: "Desarrollo Web",
+    from: "Coderhouse",
+    date: "2022",
+    link: "https://pub.coderhouse.com/legacy-certificates/625358a290985d00214e4ed2?lang=es",
+  },
+  {
+    title: "Javascript",
+    from: "Coderhouse",
+    date: "2022",
+    link: "https://pub.coderhouse.com/legacy-certificates/631fef8de430690019fb436b?lang=es",
+  },
+  {
+    title: "CCNA: Switching, Routing and Wireless Essentials",
+    from: "Cisco",
+    date: "2023",
+    link: "https://www.credly.com/badges/0968b8f8-8dcb-4f1c-9fd9-c50a806cd875/linked_in_profile",
+  },
+  {
+    title: "CCNA: Introduction to Networks",
+    from: "Cisco",
+    date: "2022",
+    link: "https://www.credly.com/badges/5f6b4421-67ad-4d1b-9769-676bf693b925/linked_in_profile",
+  },
+  {
+    title: "OCI: Foundations Associate",
+    from: "Oracle",
+    date: "2025",
+    link: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=332C2215986C0395D1A4BD439F16E16312C309025DF6C8E254379DC741D84EAF",
+  },
+];
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {
+    CERTIFICATIONS.map((certification) => (
+      <a
+        href={certification.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="relative block p-6 bg-black/30 backdrop-blur-md border border-white/10 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+      >
+        <div class="absolute top-3 right-3 text-gray-400">
+          <Link />
+        </div>
+        <h3 class="text-lg font-semibold text-white">{certification.title}</h3>
+        <p class="text-sm text-gray-400">
+          {certification.from}, {certification.date}
+        </p>
+      </a>
+    ))
+  }
+</div>

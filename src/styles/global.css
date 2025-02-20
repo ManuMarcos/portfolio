@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+.active{
+    color: var(--color-sky-400);
+    font-weight: var(--font-weight-semibold);
+}

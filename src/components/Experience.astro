@@ -1,24 +1,33 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
+import { boolean } from "astro:schema";
+import ExperienceItem from "./ExperienceItem.astro";
 
 const EXPERIENCE = [
-{
-    date: "Actualmente...",
-    title: "Creador de Contenido",
-    company: "Twitch",
-    description:
-      "Divulgo sobre programación y desarrollo web en diferentes plataformas. Galardonado como mejor creador de contenido de habla no-inglesa en 2022 y mejor comunidad en 2023 por GitHub.",
+  {
+    date: "Abr 2023 - Actualidad",
+    title: "Staff Technical Consultant",
+    company: "Extend IT",
+    descriptions: [
+      "Desarrollo e implementación de integraciones utilizando Oracle Integration Cloud (OIC) y Visual Builder.",
+      "Creación y mantenimiento de OCI Functions y OCI Buckets para optimizar procesos empresariales en la nube.",
+      "Desarrollo de paquetes en PL/SQL para empresas con ERP on-premise, mejorando la gestión de datos y la interoperabilidad con sistemas heredados.",
+    ],
+    actualmente: true,
   },
   {
-    date: "Septiembre 2022",
-    title: "Principal Frontend Engineer",
-    company: "Adevinta Spain",
-    description:
-      "Responsable de la plataforma, componentes y utilidades para la creación y desarrollo de aplicaciones web. Mejora de un 30% en la entrega de software. Implantación de medidas de integración continua y despliegue con A/B testing en más de 15 equipos.",
+    date: "Sept 2021 - Sept 2022",
+    title: "Soporte Técnico",
+    company: "Roemmers",
+    descriptions: [
+      "Brindé soporte técnico remoto y on-site para aplicaciones corporativas custom, así como sistemas operativos Windows y macOS.",
+      "Gestión y seguimiento de tickets en mesa de ayuda, documentando incidentes y soluciones para optimizar tiempos de respuesta."
+    ],
   },
-]
+];
 ---
 
+{
+  /* 
 <ol class="relative border-s border-gray-200 ml-2">                  
     {
         EXPERIENCE.map((experience) => (
@@ -28,4 +37,15 @@ const EXPERIENCE = [
         ))
     }
 </ol>
+*/
+}
 
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-2">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

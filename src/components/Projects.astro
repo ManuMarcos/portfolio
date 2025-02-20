@@ -1,0 +1,65 @@
+---
+import React from "../icons/React.astro";
+import Spring from "../icons/Spring.astro";
+import LinkButton from "./LinkButton.astro";
+import LinkIcon from "../icons/Link.astro";
+import Github from "../icons/Github.astro";
+import ProjectCard from "./ProjectCard.astro";
+
+
+const TAGS = {
+  REACT: {
+    name: "React.js",
+    class: "bg-black text-white",
+    icon: React,
+  },
+  SPRING: {
+    name: "Spring",
+    class: "bg-white text-black",
+    icon: Spring,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Sistema de gestión de reclamos",
+    description:
+      "Diseñado para administradores de edificios, pueden gestionar edificios, usuarios y áreas comunes, mientras que propietarios e inquilinos pueden reportar y seguir reclamos sobre unidades o áreas compartidas. ",
+    github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Reclamos",
+    image: "/projects/sistema_edificios2.png",
+    reverse: false,
+    tags: [TAGS.REACT, TAGS.SPRING],
+  },
+  {
+    title: "Air Manager",
+    description:
+      "Software de escritorio para agendar servicios, asignar técnicos, controlar stock y facturar instalaciones de aires acondicionados.",
+    link: "https://youtu.be/po4dZbtvY44",
+    github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Instalaciones",
+    reverse: true,
+    image: "/projects/gestion_instalaciones_1.webp",
+    tags: [TAGS.REACT, TAGS.SPRING],
+  },
+  {
+    title: "AyuDar",
+    description:
+      "AyuDar es una plataforma web diseñada con la premisa Mobile First, funcionando como link entre los comedores y los donantes.",
+    github: "https://github.com/ManuMarcos/ayudar",
+    reverse: false,
+    image: "/projects/ayudar2.png",
+    tags: [TAGS.REACT, TAGS.SPRING],
+  }
+];
+---
+
+{
+  (
+    <div class=" flex flex-col gap-y-10 mb-5">
+      {PROJECTS.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+    
+    
+  )
+}

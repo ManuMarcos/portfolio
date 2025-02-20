@@ -1,0 +1,38 @@
+---
+import Github from "../icons/Github.astro";
+import Link from "../icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
+
+
+
+const { title, image, reverse, description, github, link, tags } = Astro.props;
+---
+
+<div class={`flex flex-col md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} bg-black/30 backdrop-blur-md border border-white/10  rounded-2xl shadow-lg`}>
+  <!-- Imagen con efecto hover -->
+  <div class="md:w-1/2 overflow-hidden rounded-lg">
+    <img src={image} alt={title} class="w-full h-48 md:h-64 object-cover transition-transform duration-300 hover:scale-105" />
+  </div>
+  
+  <!-- Contenido -->
+  <div class="flex flex-col justify-center md:w-1/2 p-4 text-white">
+    <h2 class="text-2xl font-bold">{title}</h2>
+    <p class="text-gray-300 mt-2">{description}</p>
+    
+    <!-- Botones -->
+    <div class="mt-4 flex gap-3">
+      {github && (
+        <LinkButton href={github}>
+          <Github class="size-6 mr-2" />
+          Code
+        </LinkButton>
+      )}
+      {link && (
+        <LinkButton href={link}>
+          <Link class="size-4 mr-2" />
+          Demo
+        </LinkButton>
+      )}
+    </div>
+  </div>
+</div>

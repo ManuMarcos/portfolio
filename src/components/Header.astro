@@ -1,12 +1,41 @@
-<header class="flex justify-center items-center py-3 w-full xl:w-[1120px]  mx-auto">
-
-    <nav class="flex flex-row gap-x-10 opacity-80">
-        <a href="#top">Inicio</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#sobre-mi">Sobre mí</a>
-    </nav>
 
 
+
+<header class="flex flex-row justify-center">
+  <nav class="hidden md:flex fixed top-0 w-full backdrop-blur-lg z-50 mx-auto lg:max-w-4xl md:max-w-2xl bg-gray-900/50 justify-center gap-6 py-3 text-gray-300">
+    <a href="#experiencia" class="nav-link" data-section="experiencia">Experiencia</a>
+    <a href="#proyectos" class="nav-link" data-section="proyectos">Proyectos</a>
+    <a href="#cursos" class="nav-link" data-section="cursos">Cursos</a>
+    <a href="#contacto" class="nav-link" data-section="contacto">Contacto</a>
+  </nav>
 </header>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const targetElement = entry.target as HTMLElement; // Convertimos a HTMLElement
+            const sectionId = targetElement.id; // Obtenemos el ID del elemento observado
+
+            document.querySelectorAll(".nav-link").forEach((link) => {
+              const linkElement = link as HTMLElement; // Convertimos a HTMLElement
+              if(linkElement.dataset.section){
+                linkElement.classList.toggle("active", linkElement.dataset.section === sectionId);
+              }
+            });
+          }
+        });
+      },
+      { threshold: 0.50 } // Detecta cuando el 50% de la sección es visible
+    );
+
+    document.querySelectorAll("section").forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
