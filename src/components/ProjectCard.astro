@@ -2,18 +2,62 @@
 import Github from "../icons/Github.astro";
 import Link from "../icons/Link.astro";
 import LinkButton from "./LinkButton.astro";
+import { TAGS } from "../types/Tags.ts";
 
+export interface Tag {
+  name: string;
+  class: string;
+  icon: any; // ajusta según tu implementación de iconos
+}
 
+export interface Tags {
+  [key: string]: Tag;
+}
 
-const { title, image, reverse, description, github, link, tags } = Astro.props;
+export interface ProjectProps {
+  title: string;
+  image: string;
+  reverse?: boolean;
+  description: string;
+  github: string;
+  link: string;
+  tags: Array<keyof typeof TAGS>;
+}
+
+const { title, image, reverse, description, github, link, tags } =
+  Astro.props as ProjectProps;
 ---
 
-<div class={`flex flex-col md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} bg-black/30 backdrop-blur-md border border-white/10  rounded-2xl shadow-lg`}>
+<div
+  class={`flex flex-col md:flex-row ${reverse ? "md:flex-row-reverse" : ""} bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg`}
+>
   <!-- Imagen con efecto hover -->
-  <div class="md:w-1/2 overflow-hidden rounded-lg">
-    <img src={image} alt={title} class="w-full h-48 md:h-64 object-cover transition-transform duration-300 hover:scale-105" />
+  <div class="md:w-1/2 overflow-hidden rounded-lg relative"> <!-- Añadimos relative aquí -->
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-48 md:h-64 object-cover transition-transform duration-300 hover:scale-105"
+    />
+    <!-- Pills posicionadas sobre la imagen -->
+    <ul class={`absolute top-2 ${!reverse ? "left-2" : "right-2"} flex flex-wrap gap-2`}>
+      {
+        tags.map((tagName) => {
+          const tag = TAGS[tagName];
+          return (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 backdrop-blur-md`}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          );
+        })
+      }
+    </ul>
   </div>
-  
+
   <!-- Contenido -->
   <div class="flex flex-col justify-center md:w-1/2 p-4 text-white">
     <h2 class="text-2xl font-bold">{title}</h2>
@@ -21,18 +65,22 @@ const { title, image, reverse, description, github, link, tags } = Astro.props;
     
     <!-- Botones -->
     <div class="mt-4 flex gap-3">
-      {github && (
-        <LinkButton href={github}>
-          <Github class="size-6 mr-2" />
-          Code
-        </LinkButton>
-      )}
-      {link && (
-        <LinkButton href={link}>
-          <Link class="size-4 mr-2" />
-          Demo
-        </LinkButton>
-      )}
+      {
+        github && (
+          <LinkButton href={github}>
+            <Github class="size-6 mr-2" />
+            Code
+          </LinkButton>
+        )
+      }
+      {
+        link && (
+          <LinkButton href={link}>
+            <Link class="size-4 mr-2" />
+            Demo
+          </LinkButton>
+        )
+      }
     </div>
   </div>
 </div>

@@ -7,19 +7,6 @@ import Github from "../icons/Github.astro";
 import ProjectCard from "./ProjectCard.astro";
 
 
-const TAGS = {
-  REACT: {
-    name: "React.js",
-    class: "bg-black text-white",
-    icon: React,
-  },
-  SPRING: {
-    name: "Spring",
-    class: "bg-white text-black",
-    icon: Spring,
-  },
-};
-
 const PROJECTS = [
   {
     title: "Sistema de gestión de reclamos",
@@ -28,7 +15,7 @@ const PROJECTS = [
     github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Reclamos",
     image: "/projects/sistema_edificios2.png",
     reverse: false,
-    tags: [TAGS.REACT, TAGS.SPRING],
+    tags: ["REACT", "SPRING"],
   },
   {
     title: "Air Manager",
@@ -38,7 +25,7 @@ const PROJECTS = [
     github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Instalaciones",
     reverse: true,
     image: "/projects/gestion_instalaciones_1.webp",
-    tags: [TAGS.REACT, TAGS.SPRING],
+    tags: ["JAVA_SWING"],
   },
   {
     title: "AyuDar",
@@ -47,7 +34,7 @@ const PROJECTS = [
     github: "https://github.com/ManuMarcos/ayudar",
     reverse: false,
     image: "/projects/ayudar2.png",
-    tags: [TAGS.REACT, TAGS.SPRING],
+    tags: ["NEXT"],
   }
 ];
 ---
