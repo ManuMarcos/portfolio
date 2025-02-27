@@ -8,14 +8,24 @@ import ProjectCard from "./ProjectCard.astro";
 
 
 const PROJECTS = [
+{
+    title: "Medpoint Clinic",
+    description:
+      "Backend para la gestión de consultas, pacientes, médicos y facturación en una clínica médica. Proyecto de la Hackathon de TodoCode (outsider).",
+    link: "http://20.121.67.22:8080",
+    github: "https://github.com/ManuMarcos/clinica-backend",
+    reverse: false,
+    image: "/projects/medpoint_clinic.webp",
+    tags: ["SPRING", "MY_SQL"],
+  },
   {
     title: "Sistema de gestión de reclamos",
     description:
       "Diseñado para administradores de edificios, pueden gestionar edificios, usuarios y áreas comunes, mientras que propietarios e inquilinos pueden reportar y seguir reclamos sobre unidades o áreas compartidas. ",
     github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Reclamos",
-    image: "/projects/sistema_edificios2.png",
-    reverse: false,
-    tags: ["REACT", "SPRING"],
+    image: "/projects/sistema_reclamos.webp",
+    reverse: true,
+    tags: ["SPRING","MY_SQL", "REACT"],
   },
   {
     title: "Air Manager",
@@ -23,7 +33,7 @@ const PROJECTS = [
       "Software de escritorio para agendar servicios, asignar técnicos, controlar stock y facturar instalaciones de aires acondicionados.",
     link: "https://youtu.be/po4dZbtvY44",
     github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Instalaciones",
-    reverse: true,
+    reverse: false,
     image: "/projects/gestion_instalaciones_1.webp",
     tags: ["JAVA_SWING"],
   },
@@ -32,9 +42,9 @@ const PROJECTS = [
     description:
       "AyuDar es una plataforma web diseñada con la premisa Mobile First, funcionando como link entre los comedores y los donantes.",
     github: "https://github.com/ManuMarcos/ayudar",
-    reverse: false,
+    reverse: true,
     image: "/projects/ayudar2.png",
-    tags: ["NEXT"],
+    tags: ["NEXT", "MONGO"],
   }
 ];
 ---
