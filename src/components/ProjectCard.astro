@@ -7,7 +7,7 @@ import { TAGS } from "../types/Tags.ts";
 export interface Tag {
   name: string;
   class: string;
-  icon: any; // ajusta según tu implementación de iconos
+  icon: any; 
 }
 
 export interface Tags {
@@ -31,14 +31,14 @@ const { title, image, reverse, description, github, link, tags } =
 <div
   class={`flex flex-col md:flex-row ${reverse ? "md:flex-row-reverse" : ""} bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg`}
 >
-  <!-- Imagen con efecto hover -->
-  <div class="md:w-1/2 overflow-hidden rounded-lg relative"> <!-- Añadimos relative aquí -->
+  
+  <div class="md:w-1/2 overflow-hidden rounded-lg relative"> 
     <img
       src={image}
       alt={title}
       class="w-full h-48 md:h-64 object-cover transition-transform duration-300 hover:scale-105"
     />
-    <!-- Pills posicionadas sobre la imagen -->
+    
     <ul class={`absolute top-2 ${!reverse ? "left-2" : "right-2"} flex flex-wrap gap-2`}>
       {
         tags.map((tagName) => {

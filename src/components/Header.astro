@@ -18,11 +18,11 @@
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const targetElement = entry.target as HTMLElement; // Convertimos a HTMLElement
-            const sectionId = targetElement.id; // Obtenemos el ID del elemento observado
+            const targetElement = entry.target as HTMLElement; 
+            const sectionId = targetElement.id; 
 
             document.querySelectorAll(".nav-link").forEach((link) => {
-              const linkElement = link as HTMLElement; // Convertimos a HTMLElement
+              const linkElement = link as HTMLElement; 
               if(linkElement.dataset.section){
                 linkElement.classList.toggle("active", linkElement.dataset.section === sectionId);
               }
@@ -30,7 +30,7 @@
           }
         });
       },
-      { threshold: 0.50 } // Detecta cuando el 50% de la sección es visible
+      { threshold: 0.50 } 
     );
 
     document.querySelectorAll("section").forEach((section) => {

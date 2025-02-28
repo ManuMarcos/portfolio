@@ -5,6 +5,7 @@ import LinkButton from "./LinkButton.astro";
 import LinkIcon from "../icons/Link.astro";
 import Github from "../icons/Github.astro";
 import ProjectCard from "./ProjectCard.astro";
+import SmallCard from "./SmallCard.astro";
 
 
 const PROJECTS = [
@@ -12,7 +13,6 @@ const PROJECTS = [
     title: "Medpoint Clinic",
     description:
       "Backend para la gestión de consultas, pacientes, médicos y facturación en una clínica médica. Proyecto de la Hackathon de TodoCode (outsider).",
-    link: "http://20.121.67.22:8080",
     github: "https://github.com/ManuMarcos/clinica-backend",
     reverse: false,
     image: "/projects/medpoint_clinic.webp",
@@ -47,6 +47,22 @@ const PROJECTS = [
     tags: ["NEXT", "MONGO"],
   }
 ];
+const SMALL_PROJECTS = [
+{
+    title: "Sistema de adopciones",
+    description:
+      "Sistema para el seguimiento y control de los animales que ingresan al refugio; como así también el manejo de las adopciones y las visitas programadas con los nuevos dueños de las mascotas.",
+    github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Adopciones",
+    tags: ["DESSIGN_PATTERN"],
+  },
+  {
+    title: "Sistema de gestión de reclamos",
+    description:
+      "Portal web para solicitar hardware, software y generar tickets de soporte en el Departamento de Informática de una empresa.",
+    github: "https://github.com/ManuMarcos/Sistema-de-Gestion-Reclamos",
+    tags: ["JAVASCRIPT","HTML", "CSS"]
+  }
+];
 ---
 
 {
@@ -54,6 +70,12 @@ const PROJECTS = [
     <div class=" flex flex-col gap-y-10 mb-5">
       {PROJECTS.map((project) => (
         <ProjectCard {...project} />
+      ))}
+    </div>
+
+    <div class=" flex flex-row gap-x-3 mb-5">
+      {SMALL_PROJECTS.map((project) => (
+        <SmallCard {...project} />
       ))}
     </div>
     

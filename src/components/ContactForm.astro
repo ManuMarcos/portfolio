@@ -72,12 +72,12 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contact-form") as HTMLFormElement; // Type assertion aquí
+    const form = document.getElementById("contact-form") as HTMLFormElement; 
     const thankYouMessage = document.getElementById("thank-you-message");
 
     if (form && thankYouMessage) {
       form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Evitar el envío normal del formulario
+        event.preventDefault(); 
 
         fetch(this.action, {
           method: "POST",
@@ -86,8 +86,8 @@
         })
           .then((response) => {
             if (response.ok) {
-              thankYouMessage.classList.remove("hidden"); // Mostrar el mensaje de agradecimiento
-              form.reset(); // Limpiar el formulario
+              thankYouMessage.classList.remove("hidden"); 
+              form.reset(); 
               setTimeout(() => {
                 thankYouMessage.classList.add("hidden");
               }, 5000);
