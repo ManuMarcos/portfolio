@@ -1,52 +1,62 @@
 ---
 import Header from "../components/Header.astro";
 import "../styles/global.css";
-import '@fontsource-variable/space-grotesk';
+import "@fontsource-variable/space-grotesk";
 import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 
-
-const {description, title} = Astro.props;
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content={description} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<ClientRouter/>
-	</head>
-	<body class="relative text-black dark:text-[#FFFFFF]  bg-[#0D0D0D]" >
-		{/* <Header/> */}
-		<Header/>
-		<slot />
-		<Footer>
-	</body>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LG82V5E0Q"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-9LG82V5E0Q");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="relative text-black dark:text-[#FFFFFF] bg-[#0D0D0D]">
+    {/* <Header/> */}
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>
 
 <style is:global>
-	:root{
-		color-scheme: light dark;
-	}
-	html{
-		font-family: sans-serif ,system-ui, ;
-		scroll-behavior: smooth;
-	}
-	body {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-		overscroll-behavior: none;
-	}
+  :root {
+    color-scheme: light dark;
+  }
+  html {
+    font-family: sans-serif, system-ui;
+    scroll-behavior: smooth;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overscroll-behavior: none;
+  }
 
-	@media (prefers-reduced-motion :  reduce){
-		html{
-			scroll-behavior: none;
-		}
-	}
-
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: none;
+    }
+  }
 </style>
